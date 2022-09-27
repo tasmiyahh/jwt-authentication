@@ -3,12 +3,30 @@ import React, { useContext } from "react"
 import { GlobalContext } from "../../context"
 import {Link} from "react-router-dom"
 import "./index.css"
+import axios from "axios"
 
 
 const NavBar= () =>{
 
   
-   let {state , dispath}= useContext(GlobalContext);
+   let {state , dispatch}= useContext(GlobalContext);
+   const logoutHandler = async () => {
+    let baseUrl = "http://localhost:5000";
+    try {
+        let response = await axios.post(`${baseUrl}/logout`, {},
+            {
+                withCredentials: true
+            })
+        console.log("response: ", response.data);
+
+        dispatch({ type: "USER_LOGOUT" })
+
+    } catch (e) {
+        console.log("Error in api call: ", e);
+    }
+}
+
+
     return(
       <>
       <nav className='nav'>
@@ -18,12 +36,14 @@ const NavBar= () =>{
       
       
         <ul>
-          
-          <li><Link to="/login">Login</Link></li>
-          <li><Link to="/signup">Signup</Link></li>
-          <li>
+        <li>
             <Link to="/profile">profile</Link>
           </li>
+          <li><Link to="/signup">Signup</Link></li>
+          <li><Link to="/login">Login</Link></li>
+          
+         
+          <li><Link onClick={logoutHandler}>logout</Link></li>
         </ul>
       </nav>
       </>
