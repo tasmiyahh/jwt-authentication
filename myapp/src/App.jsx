@@ -1,15 +1,17 @@
 import Login from './components/login';
 import Signup from './components/signup';
 import Profile from './components/profile';
+import Home from  './components/home'
 import NavBar from './components/navbar';
 import './App.css';
 import {
   BrowserRouter as Router,
   Routes,
   Route,
-  
+  Navigate,
+
 } from "react-router-dom";
-import { useContext , useEffect } from 'react';
+import { useContext, useEffect } from 'react';
 import { GlobalContext } from './context';
 import axios from "axios"
 
@@ -23,7 +25,7 @@ import axios from "axios"
 //     let baseUrl = "http://localhost:5000";
 
 //     axios.get(`${baseUrl}/profile`, {
-     
+
 //     }, {withCredentials:true})
 //     .then(function (response) {
 //       if (response.status === 200) {
@@ -37,21 +39,21 @@ import axios from "axios"
 //           type: "USER_LOGOUT"
 //         })
 //       }
-      
+
 //     })
 //     .catch(function (error) {
 //       console.log("error in api call" , error.message);
 //       dispatch({
 //         type : "USER_LOGOUT"
 //       })
-     
+
 //     });
 //   },[])
 
-  
+
 //   return (
 //     <>
-    
+
 //      <Router>
 //        <NavBar/>
 
@@ -105,23 +107,40 @@ function App() {
     getProfile();
   }, [])
   return (
-        <>
-        
-         <Router>
-           <NavBar/>
-    
-          <Routes>
-    
-            <Route path='/login' element={<Login/>}/>
-            <Route path='/signup' element={<Signup/>} />
-            <Route path='/profile' element={<Profile/>}/>
-          </Routes>
-         </Router>
-    
-        </>
-    
-      );
-    }
-    
+    <>
+
+      <Router>
+        <NavBar />
+
+        <Routes>
+          {(state.isLogin === true) ?
+            <>
+              <Route path='/profile' element={<Profile />} />
+              <Route path="/" element={<Home/>} />
+              <Route path='*' element={<Navigate to ="/" />}></Route>
+
+            </> : null}
+
+          {(state.isLogin === false) ?
+            <>
+              <Route path='/login' element={<Login />} />
+              <Route path='/signup' element={<Signup />} />
+
+            </> : null}
+
+          {(state.isLogin === null) ?
+            <>
+              loading..
+            </> :
+            null}
+
+        </Routes>
+      </Router>
+
+    </>
+
+  );
+}
+
 
 export default App;
