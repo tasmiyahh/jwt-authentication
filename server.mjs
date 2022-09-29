@@ -76,8 +76,8 @@ app.post("/login", (req, res) => {
 
                             console.log("token: ", token);
 
-                            res.cookie('Token', token, {
-                                maxAge: 86_400_000,
+                            res.cookie('Token', token, { //token is value of token here stored in token var see above
+                                maxAge: 86_400_000,  //24 hours
                                 httpOnly: true
                             });
 
@@ -227,11 +227,11 @@ app.get("/users", async (req, res) => {
     }
 })
 
-app.get("/profile", async (req, res) => {
+app.get("/profile", async (req, res) => { //this part is used jb pg refresh bhi kren or data show ho
 
     try {
         let user = await userModel.findOne({ _id: req.body.token._id }).exec();
-        res.send(user);
+        res.send(user);  //user means single user ye reducer wala nh h
 
     } catch (error) {
         res.status(500).send({ message: "error getting users" });

@@ -51,10 +51,10 @@ export default function Login() {
       console.log("response:" ,response.data);
       alert(response.data.message);
 
-      dispatch(
+      dispatch(  // ye dispatch profile kliye use hoga
         {
           type : "USER_LOGIN",
-          payload : response.data.profile
+          payload : response.data
         })
       
       

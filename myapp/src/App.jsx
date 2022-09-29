@@ -76,7 +76,7 @@ function App() {
   let { state, dispatch } = useContext(GlobalContext);
 
 
-  useEffect(() => {
+  useEffect(() => {  //pg load hoty he profile ajaye chahy refresh kre issliye ye app ki file me dala h
 
     const getProfile = async () => {
       let baseUrl = "http://localhost:5000";
@@ -117,7 +117,7 @@ function App() {
             <>
               <Route path='/profile' element={<Profile />} />
               <Route path="/" element={<Home/>} />
-              <Route path='*' element={<Navigate to ="/" />}></Route>
+              <Route path='*' element={<Navigate to ="/" />}></Route> //agr pg pe kch na dikhy tw home pe lejao
 
             </> : null}
 
