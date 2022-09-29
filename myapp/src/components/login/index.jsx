@@ -51,7 +51,7 @@ export default function Login() {
       console.log("response:" ,response.data);
       alert(response.data.message);
 
-      dispatch(  // ye dispatch profile kliye use hoga
+      dispatch(  // ye dispatch profile kliye use hoga ta k data show ho login ka
         {
           type : "USER_LOGIN",
           payload : response.data

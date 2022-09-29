@@ -88,7 +88,7 @@ function App() {
         })
         if (response.status === 200) {
           console.log("response: ", response.data);
-          dispatch({
+          dispatch({  //ye relaod ya refresh pe pe data show profile ka isliye use is me nav bar kch nh aya coz hum ne route pe null likhha h 
             type: "USER_LOGIN",
             payload: response.data
           })
@@ -130,7 +130,7 @@ function App() {
 
           {(state.isLogin === null) ?
             <>
-              loading..
+              <Route path="*" element={<h1>loading</h1>}></Route>
             </> :
             null}
 
