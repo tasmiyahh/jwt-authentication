@@ -11,7 +11,8 @@ const NavBar = () => {
 
   let { state, dispatch } = useContext(GlobalContext);
   const logoutHandler = async () => {
-    let baseUrl = "http://localhost:5000";
+   // let baseUrl = "http://localhost:5000";
+   let baseUrl = "https://jwt-authentication-production.up.railway.app"
     try {
       let response = await axios.post(`${baseUrl}/logout`, {},
         {

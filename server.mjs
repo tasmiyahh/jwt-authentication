@@ -14,7 +14,7 @@ app.use(cookieParser()); //parsing cookie
 
 
 app.use(cors({
-    origin: ['http://localhost:3000', "*"],
+    origin: ['http://localhost:3000', 'https://loginjwt.netlify.app' ,"*"],
     credentials: true
 }));
 
