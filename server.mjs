@@ -9,8 +9,8 @@ import cookieParser from 'cookie-parser';
 const SECRET = process.env.SECRET || "topsecret";
 
 const app = express();
-app.use(express.json());
-app.use(cookieParser());
+app.use(express.json()); //parsing body
+app.use(cookieParser()); //parsing cookie
 
 
 app.use(cors({

@@ -41,7 +41,8 @@ export default function Signup() {
       agree : data.get('agree')
     });
 
-    let baseUrl = "http://localhost:5000";
+    //let baseUrl = "http://localhost:5000";
+    let baseUrl = "https://jwt-authentication-production.up.railway.app"
     axios.post(`${baseUrl}/signup`, {
       email : data.get('email'),
       password : data.get('password'),

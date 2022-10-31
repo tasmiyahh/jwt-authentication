@@ -42,7 +42,8 @@ export default function Login() {
       password: data.get('password'),
     });
     
-    let baseUrl = "http://localhost:5000";
+    //let baseUrl = "http://localhost:5000";
+    let baseUrl = "https://jwt-authentication-production.up.railway.app"
     axios.post(`${baseUrl}/login`, {
      email : data.get('email'),
      password : data.get('password')
@@ -54,7 +55,7 @@ export default function Login() {
       dispatch(  // ye dispatch profile kliye use hoga ta k data show ho login ka
         {
           type : "USER_LOGIN",
-          payload : response.data
+          payload : response.data.profile
         })
       
       
